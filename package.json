@@ -1,0 +1,28 @@
+{
+  "name": "employee-managment",
+  "version": "1.0.0",
+  "description": "trial project for insa",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrhame/employee-management-backend.git"
+  },
+  "keywords": [
+    "employee",
+    "managment"
+  ],
+  "author": "Abrham Lakew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abrhame/employee-management-backend/issues"
+  },
+  "homepage": "https://github.com/abrhame/employee-management-backend#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
+  }
+}
