@@ -2,14 +2,15 @@ const Employee = require("../Model/Employee");
 
 const employeeController = {
     getAllEmployees: async (req,res) => {
-        const { page = 1, limit = 10} = req.query;
+        const { page = 1, limit = 5} = req.query;
         const pageNumber = parseInt(page);
         const limitNumber = parseInt(limit);
 
         const skip = (pageNumber - 1) * limitNumber
         try {
+            const totalEmployees = await Employee.countDocuments();
             const employees = await Employee.find().skip(skip).limit(limitNumber)
-            res.status(200).json(employees)
+            res.status(200).json({employees,totalEmployees})
         } catch(error) {
           res.status(500).json(`Internal Server Error: ${error}`);  
         }
@@ -33,7 +34,7 @@ const employeeController = {
         const updateData = req.body;
         console.log(employeeId,updateData)
         try{
-            const updateEmployee = await Employee.findByIdAndUpdate(employeeId,updateData)
+            const updateEmployee = await Employee.findByIdAndUpdate(employeeId,updateData, {new:true})
             if (!updateEmployee){
                 return res.status(404).json('Employee not found')
             }
