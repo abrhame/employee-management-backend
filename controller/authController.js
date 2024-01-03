@@ -47,18 +47,19 @@ const authController = {
         }
     },
 
-    validateToken: async (req,res, next) => {
+
+    validateToken: async (req,res) => {
+        console.log(req.headers)
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
 
-        if (token == null){
+        if (token === null){
             return res.sendStatus(401);
         }
 
         jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
             if (err) return res.sendStatus(403);
-            req.user = user;
-            next();
+            return res.status(200).json(true);
         })
     }
 }

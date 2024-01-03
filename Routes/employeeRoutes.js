@@ -11,12 +11,12 @@ router.post("/register", authController.register);
 router.post("/login", authController.login);
 
 // validate token
-router.get('/validate-token', authController.validateToken)
+router.get('/validate', authController.validateToken)
 
 // fetch paginated Employees data
 router.get("/employees",employeeController.getAllEmployees);
 
-// fetech idividual Employee data
+// fetech individual Employee data
 router.get("/employees/:id",employeeController.getEmployeeById);
 
 // create Employee
