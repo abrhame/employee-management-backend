@@ -41,7 +41,7 @@ const authController = {
             }
 
             const token = jwt.sign({id: user._id}, process.env.JWT_SECRET_KEY);
-            res.json({token});
+            res.json({token, user: {id: user._id, name: user.name, email: user.email}});
         } catch(error) {
             res.status(500).json(`Internal Server Error: ${error}`);
         }
@@ -61,7 +61,8 @@ const authController = {
             if (err) return res.sendStatus(403);
             return res.status(200).json(true);
         })
-    }
+    },
+
 }
 
 module.exports = authController;
