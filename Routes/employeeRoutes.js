@@ -10,6 +10,9 @@ router.post("/register", authController.register);
 // login user
 router.post("/login", authController.login);
 
+// validate token
+router.get('/validate-token', authController.validateToken)
+
 // fetch paginated Employees data
 router.get("/employees",employeeController.getAllEmployees);
 
