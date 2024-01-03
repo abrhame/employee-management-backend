@@ -1,7 +1,14 @@
 const express = require('express');
 const employeeController = require('../controller/employeeController');
+const authController = require("../controller/authController");
 
 const router = express.Router();
+
+// register user 
+router.post("/register", authController.register);  
+
+// login user
+router.post("/login", authController.login);
 
 // fetch paginated Employees data
 router.get("/employees",employeeController.getAllEmployees);
